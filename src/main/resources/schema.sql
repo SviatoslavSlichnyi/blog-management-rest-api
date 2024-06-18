@@ -1,10 +1,18 @@
+CREATE TABLE role
+(
+    code VARCHAR(255) PRIMARY KEY,
+    name VARCHAR(255) NOT NULL
+);
+
 CREATE TABLE application_user
 (
     id       BIGINT AUTO_INCREMENT PRIMARY KEY,
     username VARCHAR(255) NOT NULL,
     password VARCHAR(255) NOT NULL,
     email    VARCHAR(255) NOT NULL,
-    bio      TEXT
+    role_code     VARCHAR(255) NOT NULL,
+    bio      TEXT,
+    FOREIGN KEY (role_code) REFERENCES role (code)
 );
 
 CREATE TABLE category

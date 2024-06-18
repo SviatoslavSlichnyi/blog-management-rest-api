@@ -11,6 +11,7 @@ import slichnyi.sviatoslav.blog.dto.LoginResponse;
 import slichnyi.sviatoslav.blog.dto.LoginUserDTO;
 import slichnyi.sviatoslav.blog.dto.RegisterUserDTO;
 import slichnyi.sviatoslav.blog.entity.ApplicationUser;
+import slichnyi.sviatoslav.blog.entity.Role;
 import slichnyi.sviatoslav.blog.repository.ApplicationUserRepository;
 
 @Service
@@ -32,6 +33,7 @@ public class AuthenticationService {
                 .email(registerUserDTO.getEmail())
                 .password(passwordEncoder.encode(registerUserDTO.getPassword()))
                 .bio(registerUserDTO.getBio())
+                .role(Role.builder().code("READER").build())
                 .build();
 
         userRepository.save(user);
